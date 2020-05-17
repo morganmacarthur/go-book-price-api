@@ -23,6 +23,7 @@ type Lang struct {
 // It is run concurrently from main
 // The function runs for each language
 // It communicates its state to the channel
+// The retrieved data is discarded but timed
 func count(name, url string, c chan<- string) {
 	start := time.Now()
 	r, err := http.Get(url)
