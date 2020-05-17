@@ -1,4 +1,4 @@
-{"Name": "Python", "Year": 1991, "URL": "https://python.org/"}
-{"Name": "Ruby", "Year": 1995, "URL": "https://www.ruby-lang.org/en/"}
-{"Name": "Scala", "Year": 2003, "URL": "https://www.scala-lang.org/"}
-{"Name": "Go", "Year": 2009, "URL": "https://golang.org/"}
+{"Name": "eCampus", "Year": 1991, "URL": "https://www.ecampus.com/botprice.asp?isbn=1138326720"}
+{"Name": "BiggerBooks", "Year": 1995, "URL": "https://www.biggerbooks.com/botprice?isbn=1138326720"}
+{"Name": "eBay", "Year": 2003, "URL": "https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MorganMa-BookBuys-PRD-499b6d2ce-a5766f78&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&itemFilter(0).name=ListingType&itemFilter(0).value(0)=AuctionWithBIN&itemFilter(0).value(1)=FixedPrice&itemFilter(0).value(2)=StoreInventory&sortOrder=PricePlusShippingLowest&keywords=1138326720"}
+{"Name": "Etsy", "Year": 2009, "URL": "https://openapi.etsy.com/v2/listings/active?api_key=yy319p8c79bg9xhma05flfvs&includes=ShippingInfo&keywords=1138326720"}
