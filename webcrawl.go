@@ -11,12 +11,18 @@ import (
 	"time"
 )
 
+// This is a structure describing programming languages
+// Each language has a name, year of appearance, and homepage URL
 type Lang struct {
 	Name string
 	Year int
 	URL  string
 }
 
+// This is the critical function in this example
+// It is run concurrently from main
+// The function runs for each language
+// It communicates its state to the channel
 func count(name, url string, c chan<- string) {
 	start := time.Now()
 	r, err := http.Get(url)
@@ -30,6 +36,10 @@ func count(name, url string, c chan<- string) {
 	c <- fmt.Sprintf("%s %d [%.2fs]\n", name, n, dt)
 }
 
+// This is an abstracted version of a JSON parser
+// Earlier in the presentation it was in main()
+// It is interesting for the language concept
+// But it is not critical as part of a web crawl
 func do(f func(Lang)) {
 	input, err := os.Open("./lang.json")
 	if err != nil {
@@ -49,6 +59,10 @@ func do(f func(Lang)) {
 	}
 }
 
+// The main function starts a channel and launches concurrent counts
+// The timeout is set to limit the amount of time given to retrieve
+// For each retrieval the code will either complete or timeout
+// The output of the function is the retrieval times and total time
 func main() {
 
 	start := time.Now()
