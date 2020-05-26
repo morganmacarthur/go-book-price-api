@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -19,23 +19,24 @@ type Lang struct {
 	URL  string
 }
 
+var html string
+
 // This is the critical function in this example
 // It is run concurrently from main
 // The function runs for each language
 // It communicates its state to the channel
 // The retrieved data is discarded but timed
 func count(name, url string, c chan<- string) {
-	var html strings.Builder
 	start := time.Now()
 	r, err := http.Get(url)
 	if err != nil {
 		c <- fmt.Sprintf("%s: %s", name, err)
 		return
 	}
-	n, _ := io.Copy(&html, r.Body)
+	html, err = ioutil.ReadAll(r.Body)
 	r.Body.Close()
 	dt := time.Since(start).Seconds()
-	c <- fmt.Sprintf("\n%s %d [%.2fs]\n\n", name, n, dt)
+	c <- fmt.Sprintf("\n%s [%.2fs]\n\n", name, dt)
 }
 
 // This is an abstracted version of a JSON parser
@@ -87,5 +88,5 @@ func main() {
 	}
 
 	fmt.Printf("%.2fs total\n", time.Since(start).Seconds())
-	//fmt.Println(html)
+	fmt.Println(html)
 }
